@@ -10,12 +10,12 @@ $wgImageSuffix = array();
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['parserhook'][] = array(
-	'path' => __FILE__,
-	'name' => 'Image Plugin',
-	'version' => '0.1',
-	'author' => '[https://github.com/LitusProject The Litus Project]',
-	'descriptionmsg' => 'description-message',
-	'url' => 'https://github.com/LitusProject/MediaWikiImageLoader'
+    'path' => __FILE__,
+    'name' => 'Image Plugin',
+    'version' => '0.1',
+    'author' => '[https://github.com/LitusProject The Litus Project]',
+    'descriptionmsg' => 'description-message',
+    'url' => 'https://github.com/LitusProject/MediaWikiImageLoader'
 );
 
 /* Add our class to the autoloader */

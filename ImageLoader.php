@@ -11,7 +11,7 @@ $wgImageSuffix = array();
  */
 $wgExtensionCredits['parserhook'][] = array(
     'path' => __FILE__,
-    'name' => 'Image Plugin',
+    'name' => 'ImageLoader',
     'version' => '0.1',
     'author' => '[https://github.com/LitusProject The Litus Project]',
     'descriptionmsg' => 'description-message',

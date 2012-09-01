@@ -19,10 +19,13 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 /* Add our class to the autoloader */
-$wgAutoloadClasses['ImageLoader'] = dirname(__FILE__) . '/ImageLoader.body.php';
+$wgAutoloadClasses['ImageLoader'] = dirname( __FILE__ ) . '/ImageLoader.body.php';
 
 /* Add our initialization function to the hook */
 $wgHooks['ParserFirstCallInit'][] = 'ImageLoader::init';
 
 /* Install the 'magic word' image */
 $wgExtensionMessagesFiles['ImageLoaderMagic'] = dirname( __FILE__ ) . '/ImageLoader.i18n.magic.php';
+
+/* Install our i18n */
+$wgExtensionMessagesFiles['ImageLoader'] = dirname( __FILE__ ) . '/ImageLoader.i18n.php';

@@ -14,9 +14,9 @@ class ImageLoader {
 	
 	private static function error( $message, $arg = false ) {
 		return '<strong class="error">'
-			. wfMsg( 'error-prefix' ) 
-			. ( !$arg ? wfMsg( $message ) : wfMsg( $message, $arg ) )
-			. '</strong>';
+			. wfMessage( 'error-prefix' )->plain() 
+			. ( !$arg ? wfMessage( $message )->plain() : wfMessage( $message, $arg )->plain() )
+			. '</strong><br />';
 	}
 	
 	public static function parserFunction( &$parser, $class = false, $arg = false ) {
@@ -25,12 +25,12 @@ class ImageLoader {
 //		$parser->disableCache();
 
 		if ( !$class )
-			return self::error( 'no-image-class' );
+			return self::error( 'no-class' );
 		// first check the class, otherwise if someone uses {{#image:class{{!}}argument}},
 		// they get a no-argument error instead of the invalid-image-class error, which is confusing.
 		// (the class is in this case class|argument, which is obviously not what we want)
 		if ( !$wgImagePrefix[$class] || !$wgImageSuffix[$class] )
-			return self::error( 'invalid-image-class', $class );
+			return self::error( 'invalid-class', $class );
 		if ( !$arg )
 			return self::error( 'no-argument' );
 	

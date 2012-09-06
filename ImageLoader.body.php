@@ -3,14 +3,6 @@
 if ( !defined( 'MEDIAWIKI' ) ) die( 'This file is meant to be used by mediawiki.' );
 
 class ImageLoader {
-
-    public static function init( Parser &$parser ) {
-        // add the parser hook
-        $parser->setFunctionHook( 'image', 'ImageLoader::parserFunction' );
-        
-        // return true so that MW can continue
-        return true;
-    }
     
     private static function error( $message, $arg = false ) {
         return '<strong class="error">'
@@ -35,7 +27,7 @@ class ImageLoader {
             return self::error( 'no-argument' );
     
         return $parser->insertStripItem(
-            '<img src="' . $wgImagePrefix[$class] . $arg . $wgImageSuffix[$class] . '"></img>',
+            '<img src="' . $wgImagePrefix[$class] . htmlspecialchars( $arg ) . $wgImageSuffix[$class] . '"></img>',
             $parser->mStripState
         );
     }

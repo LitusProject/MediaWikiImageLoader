@@ -22,10 +22,19 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgAutoloadClasses['ImageLoader'] = dirname( __FILE__ ) . '/ImageLoader.body.php';
 
 /* Add our initialization function to the hook */
-$wgHooks['ParserFirstCallInit'][] = 'ImageLoader::init';
+$wgHooks['ParserFirstCallInit'][] = 'wfImageLoaderInit';
 
 /* Install the 'magic word' image */
 $wgExtensionMessagesFiles['ImageLoaderMagic'] = dirname( __FILE__ ) . '/ImageLoader.i18n.magic.php';
 
 /* Install our i18n */
 $wgExtensionMessagesFiles['ImageLoader'] = dirname( __FILE__ ) . '/ImageLoader.i18n.php';
+
+/* Initialisation function */
+function wfImageLoaderInit( Parser &$parser ) {
+    // add the parser hook
+    $parser->setFunctionHook( 'image', 'ImageLoader::parserFunction' );
+        
+    // return true so that MW can continue
+    return true;
+}
